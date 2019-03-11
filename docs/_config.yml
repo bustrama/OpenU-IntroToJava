@@ -1,2 +1,4 @@
 name: this is a test
 markdown: kramdown
+
+theme: jekyll-theme-cayman
