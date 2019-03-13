@@ -46,7 +46,7 @@ public class Person
         return this._gender; 
     }
     
-    public void setid(String gender)
+    public void setGender(String gender)
     {
         this._gender = gender; 
     }
