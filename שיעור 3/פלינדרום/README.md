@@ -5,7 +5,7 @@
 
 <br>
 
-Palindrom מה שהיה בכיתה
+Palindrom מה שהיה בכיתה  <br>
 Palindrom2 פתרון שלי
 
 </div>
