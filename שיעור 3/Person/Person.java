@@ -1,63 +1,119 @@
-public class Person
-{
+import java.util.Scanner;
+
+/**
+ * This class defines a person
+ */
+public class Person{
+    //define the attributes
     private String _name;
-    private long _id;
+    private long _identification;
     private String _gender;
-    private double _age;
-    
-    public Person()
+    private int _age;
+
+    /**
+     * Constructor for objects of class Person
+     */
+    public Person ()
     {
-    	_name = null;
-    	_id = 0 ;
-    	_gender = null;
-    	_age = 0;
+        _name = null;
+        _identification = 0;
+        _gender = null ;
+        _age = 0;
     }
-    
-    public Person(String name, long id, String gender, double age)
+
+    /**
+     * This is the regular constructor
+     * @param name Name of the person
+     * @param identificaiton The ID number of the person
+     * @param age The age of the person
+     * @param gender The gender of the person
+     */
+    public Person (String name, long identification, int age, String gender)
     {
-	_name = name;
-    	_id = id ;
-    	_gender = gender;
-    	_age = age;
+        _name = name;
+        _identification = identification;
+        _age = age;
+        this._gender = gender;
     }
-    
-    public String getName()
+
+    /**
+     * This method returns the object representation as a string
+     */
+    public String toString ()
     {
-        return this._name; 
+        return _name + _identification + _gender + _age;
     }
-    
-    public void setName(String name)
+
+    /**
+     * This method returns the name of the person
+     * @return name Name of the person
+     */
+    public String getName ()
     {
-        this._name = name; 
+        return _name;
     }
-    
-    public long getId()
-    {
-        return this._id; 
+
+    /**
+     * This method sets the name of the person
+     */
+    public void setName (String name) {
+        this._name = name
+
     }
-    
-    public void setId(long id)
+
+    /**
+     * This method returns the ID number of the person
+     * @return identification identification of the person
+     */
+    public long getIdentification ()
     {
-        this._id = id; 
+        return _identification;
     }
-    
-    public String getGender()
-    {
-        return this._gender; 
+
+    /**
+     * This method sets the ID number of the person
+     */
+    public void setIdentification (long identification) {
+        this._identification = identification;
+
     }
-    
-    public void setGender(String gender)
+
+    /**
+     * This method returns the gender of the person
+     * @return gender Gender of the person
+     */
+    public String getGender ()
     {
-        this._gender = gender; 
+        return _gender;
     }
-    
-    public double getAge()
-    {
-        return this._age; 
+
+    /**
+     * This method sets the gender of the person
+     */
+    public void setGender (String gender) {
+        this._gender = gender;
+
     }
-    
-    public void setAge(double age)
+
+    /**
+     * This method returns the age of the person
+     * @return age Age of the person
+     */
+    public int getAge ()
     {
-        this._age = age; 
+        return _age;
+    }
+
+    /**
+     * This method sets the age of the person
+     */
+    public void setAge (int age) {
+        this._age = age;
+
+    }
+
+    public boolean equals (Person p)
+    {
+        return _identification == p._identification && _name.equals(p._name) && _gender == p._gender && _age ==p._age;
     }
 }
