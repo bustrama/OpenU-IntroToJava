@@ -1,6 +1,6 @@
 public class Tester {
-    public static final String NOT_OK = "\n\t\t\t Not Ok!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-    public static final String OK = "\n\t\t\t OK!";
+    public static final String NOT_OK = "\n\t\t\t\t\t\t Not Ok!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+    public static final String OK = "\n\t\t\t\t\t\t OK!";
 
     public static void main(String[] args){
         System.out.println("**********************************");
@@ -109,8 +109,6 @@ public class Tester {
             System.out.println(OK);
         else
             System.out.println(NOT_OK);
-
-        System.out.println("If all above is OK! \nconstructors should be ok too");
     }
 
     public static void testBox(){
@@ -120,20 +118,105 @@ public class Tester {
 
         System.out.print("Checking Aliasing: ");
         boxValues.getBase().setX(5);
-        if(boxValues.getBase().getX() == boxCopy.getCenter().getX())
+        if(boxCopy.getCenter().getX() == boxValues.getBase().getX())
             System.out.println(NOT_OK);
         else
             System.out.println(OK);
 
-        System.out.print("Checking Setters: ");
+        System.out.print("Checking Measures Setters: ");
         boxDefault.setLength(10);
         boxDefault.setHeight(-5);
         boxDefault.setWidth(0);
         if(boxDefault.getLength() == 10 && boxDefault.getHeight() == 1 && boxDefault.getWidth() == 1)
             System.out.println(OK);
         else
+            System.out.println(NOT_OK + "\n Check חיובי ממש");
+
+        System.out.print("Checking Base Setter: ");
+        Point3D p = new Point3D(7,7,7);
+        boxDefault.setBase(p);
+        p.setY(8); // For Aliasing check
+        if(boxDefault.getBase().equals(new Point3D(7,7,7)))
+            System.out.println(OK);
+        else if(boxDefault.getBase().getY() == 8)
+            System.out.println("Check for Aliasing");
+        else
             System.out.println(NOT_OK);
 
-        System.out.println("If all above is OK! \nconstructors should be ok too");
+        System.out.print("Checking toString: ");
+        boxDefault = new Box3D(new Point3D(3,4,5), 10, 14, 6);
+        if(boxDefault.toString().equals("The base point is (3.0,4.0,5.0), length = 10, width = 14, height = 6"))
+            System.out.println(OK);
+        else
+            System.out.println(NOT_OK);
+
+        System.out.print("Checking Equals: ");
+        if(boxDefault.equals(new Box3D(new Point3D(3,4,5), 10, 14, 6)))
+            System.out.println(OK);
+        else
+            System.out.println(NOT_OK);
+
+        System.out.print("Checking move: ");
+        if(boxValues.move(0,3,2).getBase().equals(new Point3D(5,5,5)) && boxValues.getBase().equals(new Point3D(5,2,3)))
+            System.out.println(OK);
+        else
+            System.out.println(NOT_OK);
+
+        System.out.print("Checking getUpRightBackPoint: ");
+        p = new Point3D(boxCopy.getBase().getX()-boxCopy.getLength(), boxCopy.getBase().getY() + boxCopy.getWidth(), boxCopy.getBase().getZ() + boxCopy.getHeight());
+        if(boxCopy.getUpRightBackPoint().equals(p))
+            System.out.println(OK);
+        else
+            System.out.println(NOT_OK);
+
+        System.out.print("Checking getCenter: ");
+        p = new Point3D(boxCopy.getBase().getX()-boxCopy.getLength()/2.0, boxCopy.getBase().getY() + boxCopy.getWidth()/2.0, boxCopy.getBase().getZ() + boxCopy.getHeight()/2.0);
+        if(boxCopy.getCenter().equals(p))
+            System.out.println(OK);
+        else
+            System.out.println(NOT_OK);
+
+        System.out.print("Checking Distance: ");
+        double calc = Math.sqrt((Math.pow(boxCopy.getCenter().getX() - boxDefault.getCenter().getX(), 2)) + (Math.pow(boxCopy.getCenter().getY() - boxDefault.getCenter().getY(), 2)) + (Math.pow(boxCopy.getCenter().getZ() - boxDefault.getCenter().getZ(), 2)));
+        if(boxDefault.distance(boxCopy) == calc)
+            System.out.println(OK);
+        else
+            System.out.println(NOT_OK);
+
+        System.out.print("Checking getVolume: ");
+        if(boxCopy.getVolume() == (boxCopy.getHeight() * boxCopy.getWidth() * boxCopy.getLength()))
+            System.out.println(OK);
+        else
+            System.out.println(NOT_OK);
+
+        System.out.print("Checking getSurfaceArea: ");
+        double surfaceArea = 2 * (boxValues.getWidth() * boxValues.getHeight() + boxValues.getLength() * boxValues.getWidth() + boxValues.getLength() * boxValues.getHeight());
+        if(boxValues.getSurfaceArea() == surfaceArea)
+            System.out.println(OK);
+        else
+            System.out.println(NOT_OK);
+
+        System.out.print("Checking isLargerCapacity: ");
+        boolean check = (boxCopy.getVolume() > boxValues.getVolume()) ? true : false;
+        if(boxCopy.isLargerCapacity(boxValues) == check)
+            System.out.println(OK);
+        else
+            System.out.println(NOT_OK);
+
+        System.out.print("Checking contains: ");
+        check = (boxDefault.getLength() > boxCopy.getLength()) && (boxDefault.getHeight() > boxCopy.getHeight()) && (boxDefault.getWidth() > boxCopy.getWidth());
+        if(boxDefault.contains(boxCopy) == check)
+            System.out.println(OK);
+        else
+            System.out.println(NOT_OK);
+
+        System.out.print("Checking isAbove: ");
+        boxDefault = new Box3D();
+        boxCopy = new Box3D(new Point3D(2,2,2), 2,2,2);
+        boxValues = new Box3D(new Point3D(0.5,0.5,0.5), 1,1,1);
+        if(boxCopy.isAbove(boxDefault) && !boxValues.isAbove(boxDefault))
+            System.out.println(OK);
+        else
+            System.out.println(NOT_OK);
     }
 }
