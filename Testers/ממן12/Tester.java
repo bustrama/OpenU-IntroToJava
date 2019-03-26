@@ -1,6 +1,6 @@
 public class Tester {
-    public static final String NOT_OK = "\n\t\t\t \u001B[31m Not Ok \u001B[0m";
-    public static final String OK = "\n\t\t\t \u001B[34m OK! \u001B[0m";
+    public static final String NOT_OK = "\n\t\t\t Not Ok!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+    public static final String OK = "\n\t\t\t OK!";
 
     public static void main(String[] args){
         System.out.println("**********************************");
@@ -19,9 +19,8 @@ public class Tester {
         Point3D pointValues = new Point3D(1,2,3);
         Point3D pointCopy = new Point3D(pointValues);
 
-        pointValues.setX(5);
-
         System.out.print("Checking Aliasing: ");
+        pointValues.setX(5);
         if(pointValues.getX() == pointCopy.getX())
             System.out.println(NOT_OK);
         else
@@ -111,10 +110,30 @@ public class Tester {
         else
             System.out.println(NOT_OK);
 
-
+        System.out.println("If all above is OK! \nconstructors should be ok too");
     }
 
     public static void testBox(){
+        Box3D boxDefault = new Box3D();
+        Box3D boxValues = new Box3D(new Point3D(1,2,3), 3,4,5);
+        Box3D boxCopy = new Box3D(boxValues);
 
+        System.out.print("Checking Aliasing: ");
+        boxValues.getBase().setX(5);
+        if(boxValues.getBase().getX() == boxCopy.getCenter().getX())
+            System.out.println(NOT_OK);
+        else
+            System.out.println(OK);
+
+        System.out.print("Checking Setters: ");
+        boxDefault.setLength(10);
+        boxDefault.setHeight(-5);
+        boxDefault.setWidth(0);
+        if(boxDefault.getLength() == 10 && boxDefault.getHeight() == 1 && boxDefault.getWidth() == 1)
+            System.out.println(OK);
+        else
+            System.out.println(NOT_OK);
+
+        System.out.println("If all above is OK! \nconstructors should be ok too");
     }
 }
