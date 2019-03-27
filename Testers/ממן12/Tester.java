@@ -117,7 +117,7 @@ public class Tester {
         Box3D boxCopy = new Box3D(boxValues);
 
         System.out.print("Checking Aliasing: ");
-        boxValues.getBase().setX(5);
+        boxValues.setBase(new Point3D(5,2,3));
         if(boxCopy.getCenter().getX() == boxValues.getBase().getX())
             System.out.println(NOT_OK);
         else
