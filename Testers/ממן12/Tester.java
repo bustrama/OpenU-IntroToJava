@@ -1,3 +1,7 @@
+/**
+ * @author Ben
+ */
+
 public class Tester {
     public static final String NOT_OK = "\n\t\t\t\t\t\t Not Ok!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     public static final String OK = "\n\t\t\t\t\t\t OK!";
