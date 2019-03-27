@@ -2,7 +2,6 @@
  *  Author: Ben Brandes
  *  Date: 16/03/19
  */
-
 import java.util.Scanner;
 
 public class Circle{
