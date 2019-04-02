@@ -1,14 +1,13 @@
-import java.util.Scanner;
-
 /**
  * This class defines a person
  */
 public class Person{
     //define the attributes
     private String _name;
-    private long _identification;
-    private String _gender;
+    private long _id;
+    private boolean _gender;
     private int _age;
+    private Address _address;
 
     /**
      * Constructor for objects of class Person
@@ -16,24 +15,26 @@ public class Person{
     public Person ()
     {
         _name = null;
-        _identification = 0;
-        _gender = null ;
+        _id = 0;
+        _gender = true;
         _age = 0;
+        _address = new Address();
     }
 
     /**
      * This is the regular constructor
      * @param name Name of the person
-     * @param identificaiton The ID number of the person
+     * @param id The ID number of the person
      * @param age The age of the person
      * @param gender The gender of the person
      */
-    public Person (String name, long identification, int age, String gender)
+    public Person (String name, long id, int age, boolean gender, Address addr)
     {
         _name = name;
-        _identification = identification;
+        _id = id;
         _age = age;
-        this._gender = gender;
+        _gender = gender;
+        _address = new Address(addr);
     }
 
     /**
@@ -41,7 +42,7 @@ public class Person{
      */
     public String toString ()
     {
-        return _name + _identification + _gender + _age;
+        return "Name: " + _name + ", ID: " + _id + ", Gender: " + (_gender ? "female":"male")+", age: " + _age + ", Address: " + _address.toString();
     }
 
     /**
@@ -57,25 +58,23 @@ public class Person{
      * This method sets the name of the person
      */
     public void setName (String name) {
-        this._name = name
-
+        this._name = name;
     }
 
     /**
      * This method returns the ID number of the person
      * @return identification identification of the person
      */
-    public long getIdentification ()
+    public long getId ()
     {
-        return _identification;
+        return _id;
     }
 
     /**
      * This method sets the ID number of the person
      */
-    public void setIdentification (long identification) {
-        this._identification = identification;
-
+    public void setId (long id) {
+        this._id = id;
     }
 
     /**
@@ -84,13 +83,13 @@ public class Person{
      */
     public String getGender ()
     {
-        return _gender;
+        return (_gender ? "female":"male");
     }
 
     /**
      * This method sets the gender of the person
      */
-    public void setGender (String gender) {
+    public void setGender (boolean gender) {
         this._gender = gender;
 
     }
@@ -109,11 +108,17 @@ public class Person{
      */
     public void setAge (int age) {
         this._age = age;
-
     }
 
-    public boolean equals (Person p)
-    {
-        return _identification == p._identification && _name.equals(p._name) && _gender == p._gender && _age ==p._age;
+    public boolean equals (Person p) {
+        return _id == p._id && _name.equals(p._name) && _gender == p._gender && _age ==p._age;
+    }
+
+    public Address getAddress(){
+        return new Address(_address);
+    }
+
+    public void setAddress(Address addr){
+        _address = new Address(addr);
     }
 }
