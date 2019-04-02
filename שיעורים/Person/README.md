@@ -1,8 +1,5 @@
 <div dir="rtl">
   
-  עדכון אחרון מאת:  <br>
-  © Tamar Klein
-  
 ליצור מחלקה שקוראים לה Person
 
 הוספת
