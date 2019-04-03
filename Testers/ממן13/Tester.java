@@ -177,7 +177,7 @@ public class Tester {
 
         System.out.println("Filtered Image Matrix:");
         toCheck = "70\t55\t77\t64\t83\n51\t42\t84\t98\t135\n28\t25\t90\t142\t204\n7\t9\t74\t139\t201\n3\t5\t63\t125\t183\n";
-        String toCheck2 = "71\t57\t62\t31";
+        String toCheck2 = "71\t57\t62\t31\n";
         if (toCheck.equals(mat.imageFilterAverage().toString()) && toCheck2.equals(matr.imageFilterAverage().toString()))
             System.out.println(GOOD);
         else
