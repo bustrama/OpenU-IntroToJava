@@ -94,7 +94,11 @@ public class Tester {
         else
             System.out.println(BAD);
 
-        System.out.println("volumeOfSmallestBox: " + coll.volumeOfSmallestBox(40, 50));
+        System.out.println("volumeOfSmallestBox: ");
+        if(coll.volumeOfSmallestBox(40, 48) == 127400)
+            System.out.println(GOOD);
+        else
+            System.out.println(BAD);
 
         System.out.println("getNumOfBoxes: ");
         if(coll.getNumOfBoxes() == 50)
