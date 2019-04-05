@@ -112,21 +112,24 @@ public class Tester {
 
         boolean condition = true;
         Random rand = new Random();
+        int i = 1;
         while(condition) {
-            boolean cont = coll.addBox(new Point3D(rand.nextInt(50), rand.nextInt(50), rand.nextInt(50)), rand.nextInt(50), rand.nextInt(50), rand.nextInt(50));
+            boolean cont = coll.addBox(new Point3D(rand.nextInt(i), rand.nextInt(i), rand.nextInt(i)), i, i+2, i*2);
             if(!cont)
                 condition = false;
+            i+=2;
         }
 
         System.out.println(coll.toString());
         System.out.println("Done printing 100 boxes with random values");
 
-        System.out.println("Methods: ");
-        System.out.println("mostUpperBaseCorner" + coll.mostUpperBaseCorner());
-        System.out.println("totalSurfaceArea" + coll.totalSurfaceArea());
-        System.out.println("howManyContains" + coll.howManyContains(new Box3D(new Point3D(2,2,2), 5,7,8)));
-        System.out.println("volumeOfSmallestBox" + coll.volumeOfSmallestBox(44, 68));
-        System.out.println("getNumOfBoxes" + coll.getNumOfBoxes());
+        System.out.println("\n********** Methods **********");
+        System.out.println("mostUpperBaseCorner: \n\t\t\t\t" + coll.mostUpperBaseCorner());
+        System.out.println("totalSurfaceArea: \n\t\t\t\t" + coll.totalSurfaceArea());
+        Box3D box = new Box3D(new Point3D(2,2,2), 5,7,8);
+        System.out.println("howManyContains: \n\t" + coll.howManyContains(box) + " boxes can contain this box: \n\t"  + box.toString());
+        System.out.println("volumeOfSmallestBox: \n\t\t\t\t" + coll.volumeOfSmallestBox(40, 68));
+        System.out.println("getNumOfBoxes: \n\t\t\t\t" + coll.getNumOfBoxes());
     }
 
     static int m[][] = {
