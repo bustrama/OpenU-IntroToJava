@@ -70,6 +70,12 @@ public class Tester {
             boolean cont = coll.addBox(new Point3D(i,i+1,i+2), i+1, i, i+3);
         }
 
+        System.out.println("Array sorted by volume:  ");
+        if(isSorted(coll))
+            System.out.println(GOOD);
+        else
+            System.out.println(BAD);
+
         System.out.println("mostUpperBaseCorner: ");
         if(coll.mostUpperBaseCorner().toString().equals("The base point is (49.0,50.0,51.0), length = 50, width = 49, height = 52"))
             System.out.println(GOOD);
@@ -105,6 +111,15 @@ public class Tester {
             System.out.println(GOOD);
         else
             System.out.println(BAD);
+    }
+
+    public static boolean isSorted(Collection coll){
+        Box3D[] arr = coll.getBoxes(); // Aliasing doesn't matter cause we're not altering the values
+        for (int i = 0; i < coll.getNumOfBoxes()-1; i++) {
+            if(arr[i].getVolume() > arr[i+1].getVolume())
+                return false;
+        }
+        return true;
     }
 
     public static void printCollection(){
