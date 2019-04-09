@@ -71,8 +71,11 @@ public class Tester {
         }
 
         System.out.println("Array sorted by volume:  ");
-        if(isSorted(coll))
+        String sorted = isSorted(coll);
+        if(sorted == "true")
             System.out.println(GOOD);
+        else if (sorted == "null")
+            System.out.println("You've holes in the array");
         else
             System.out.println(BAD);
 
@@ -113,13 +116,15 @@ public class Tester {
             System.out.println(BAD);
     }
 
-    public static boolean isSorted(Collection coll){
+    public static String isSorted(Collection coll){
         Box3D[] arr = coll.getBoxes(); // Aliasing doesn't matter cause we're not altering the values
         for (int i = 0; i < coll.getNumOfBoxes()-1; i++) {
+            if(arr[i] == null)
+                return "null";
             if(arr[i].getVolume() > arr[i+1].getVolume())
-                return false;
+                return "false";
         }
-        return true;
+        return "true";
     }
 
     public static void printCollection(){
