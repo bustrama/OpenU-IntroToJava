@@ -9,4 +9,5 @@
 ### בנוסף יצרנו עמוד שמרכז דברים חשובים:
 <a href="https://github.com/BuStRaMa/OpenU-IntroToJava/wiki"> Wiki </a>
 
+Adding issues feature will be very useful.
 </div>
