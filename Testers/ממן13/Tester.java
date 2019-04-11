@@ -15,12 +15,14 @@ public class Tester {
         Scanner input = new Scanner(System.in);
         int option = 0;
 
-        while (true) {
+        boolean run = true;
+
+        while (run) {
             System.out.println("*****************************************");
             System.out.println("*****         Mmn 13 Tester         *****");
             System.out.println("*****************************************");
             System.out.print("\n 1. Test Collection \n 2. Test Matrix \n 3. Test Both \n 4. Print Collection " +
-                    "\n 5. Print Matrix \n Choose an option: ");
+                    "\n 5. Print Matrix \n 6. Quit. \n Choose an option: ");
 
             try {
                 option = input.nextInt();
@@ -47,6 +49,9 @@ public class Tester {
                         break;
                     case 5:
                         printMatrix();
+                        break;
+                    case 6:
+                        run = false;
                         break;
                     default:
                         System.out.println("Enter a number from the options above");
