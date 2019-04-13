@@ -72,6 +72,8 @@ public class Tester {
 
         Collection coll = new Collection();
 
+        Box3D mostUpper = coll.mostUpperBaseCorner();
+
         System.out.println("Checking Constructor: ");
         if(coll.getNumOfBoxes() == 0 && coll.getBoxes().length == 0)
             System.out.println(GOOD);
@@ -92,7 +94,7 @@ public class Tester {
             System.out.println(BAD);
 
         System.out.println("Checking mostUpperBaseCorner: ");
-        if(coll.mostUpperBaseCorner().toString().equals("The base point is (49.0,50.0,51.0), length = 50, width = 49, height = 52"))
+        if(coll.mostUpperBaseCorner().toString().equals("The base point is (49.0,50.0,51.0), length = 50, width = 49, height = 52") && mostUpper == null)
             System.out.println(GOOD);
         else
             System.out.println(BAD);
