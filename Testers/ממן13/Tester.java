@@ -136,6 +136,15 @@ public class Tester {
         else
             System.out.println(BAD);
 
+        Collection coll2 = new Collection();
+        coll2.addBox(new Point3D(), 1, 1, 1);
+
+        System.out.println("Checking toString: ");
+        if(coll2.toString().equals("Box no. 1: The base point is (0.0,0.0,0.0), length = 1, width = 1, height = 1\n"))
+            System.out.println(GOOD);
+        else
+            System.out.println(BAD);
+
         System.out.println("Checking addBox functionality: ");
         Box3D box = new Box3D(coll.getBoxes()[coll.getNumOfBoxes()-1]);
         box.setBase(new Point3D());
