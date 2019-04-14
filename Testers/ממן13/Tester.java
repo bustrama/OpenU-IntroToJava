@@ -3,7 +3,6 @@
  * @version v1.2
  * שימו לב שבבדיקה של המטריקס, הבדיקה מסתמכת על toString אז יש לדאוג שהוא תקין
  */
-import javax.swing.*;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
@@ -117,8 +116,12 @@ public class Tester {
         else
             System.out.println(BAD);
 
+        boolean smallestVolume = (coll.volumeOfSmallestBox(40, 48) == 127400) && (coll.volumeOfSmallestBox(40, 101) == 0) &&
+                (coll.volumeOfSmallestBox(70, 8) == 0) && (coll.volumeOfSmallestBox(0, 3) == 140) &&
+                (coll.volumeOfSmallestBox(6, 6) == 560) && (coll.volumeOfSmallestBox(-1, 2) == 0);
+
         System.out.println("Checking volumeOfSmallestBox: ");
-        if(coll.volumeOfSmallestBox(40, 48) == 127400)
+        if(smallestVolume)
             System.out.println(GOOD);
         else
             System.out.println(BAD);
