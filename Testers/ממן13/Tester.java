@@ -116,7 +116,7 @@ public class Tester {
         else
             System.out.println(BAD);
 
-        boolean smallestVolume = (coll.volumeOfSmallestBox(40, 48) == 127400) && (coll.volumeOfSmallestBox(40, 101) == 0) &&
+        boolean smallestVolume = (coll.volumeOfSmallestBox(40, 48) == 127400) && (coll.volumeOfSmallestBox(40, 100) == 0) &&
                 (coll.volumeOfSmallestBox(70, 8) == 0) && (coll.volumeOfSmallestBox(0, 3) == 140) &&
                 (coll.volumeOfSmallestBox(6, 6) == 560) && (coll.volumeOfSmallestBox(-1, 2) == 0);
 
