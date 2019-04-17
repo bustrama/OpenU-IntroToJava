@@ -79,7 +79,7 @@ public class Tester {
         else
             System.out.println(BAD);
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 49; i >= 0; i--) {
             boolean cont = coll.addBox(new Point3D(i,i+1,i+2), i+1, i, i+3);
         }
 
@@ -182,12 +182,12 @@ public class Tester {
 
         boolean condition = true;
         Random rand = new Random();
-        int i = 1;
+        int i = 500;
         while(condition) {
             boolean cont = coll.addBox(new Point3D(rand.nextInt(i), rand.nextInt(i), rand.nextInt(i)), i, i+2, i*2);
             if(!cont)
                 condition = false;
-            i+=2;
+            i-=4;
         }
 
         System.out.println(coll.toString());
