@@ -10,7 +10,7 @@ public class Point3D{
     private double _x;
     private double _y;
     private double _z;
-    private final int DEFAULT_VAL = 1;
+    private final int DEFAULT_VAL = 0;
 
     /**
      * Constructs and initializes a Point3D to (0,0,0).
