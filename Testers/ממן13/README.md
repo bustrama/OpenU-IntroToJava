@@ -15,7 +15,7 @@
 
 ### הבדיקה של toString מתבצעת ע"פ השורה הזאת:
 
-<div dir="rtl">
+<div dir="ltr">
 
 ```Java
 Box no. 1: The base point is (0.0,0.0,0.0), length = 1, width = 1, height = 1\n
