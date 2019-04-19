@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class Tester {
     final static String GOOD = "\t\t\t OK!";
     final static String BAD = "\t\t\t ** Oh snap! something is broken **";
+    final static  String ALIASING = "\t\t\t ** Aliasing Problem ! **";
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -94,8 +95,15 @@ public class Tester {
         else
             System.out.println(BAD);
 
+        Collection coll3 = new Collection();
+        coll3.addBox(new Point3D(), 1 , 1, 1);
+        Box3D highestBox = coll3.mostUpperBaseCorner();
+        highestBox.setBase(new Point3D(2,2,2));
+
         System.out.println("Checking mostUpperBaseCorner: ");
-        if(coll.mostUpperBaseCorner().toString().equals("The base point is (49.0,50.0,51.0), length = 50, width = 49, height = 52") && mostUpper == null)
+        if(coll3.mostUpperBaseCorner().equals(highestBox))
+            System.out.println(ALIASING);
+        else if(coll.mostUpperBaseCorner().toString().equals("The base point is (49.0,50.0,51.0), length = 50, width = 49, height = 52") && mostUpper == null)
             System.out.println(GOOD);
         else
             System.out.println(BAD);
@@ -248,10 +256,22 @@ public class Tester {
         Matrix mat = new Matrix(m);
         Matrix matr = new Matrix(ma);
         Matrix col = new Matrix(oneCol);
+        Matrix empty = new Matrix(2,2);
+
+        System.out.println("Constructor Aliasing:");
+        int[][] alias = { {10, 30, 50}, {100, 150, 200} };
+        Matrix aliasing = new Matrix(alias);
+        alias[1][1] = 222;
+        Matrix aliasing2 = new Matrix(alias);
+        if (!aliasing.toString().equals(aliasing2.toString()))
+            System.out.println(GOOD);
+        else
+            System.out.println(BAD);
 
         System.out.println("Regular Matrix:");
         toCheck = "19\t124\t28\t35\t38\n115\t22\t25\t230\t31\n9\t21\t22\t249\t230\n0\t6\t9\t232\t255\n2\t5\t10\t116\t129\n";
-        if (toCheck.equals(mat.toString()))
+        String emptyMat = "0\t0\n0\t0\n";
+        if (toCheck.equals(mat.toString()) && emptyMat.equals(empty.toString()))
             System.out.println(GOOD);
         else
             System.out.println(BAD);
