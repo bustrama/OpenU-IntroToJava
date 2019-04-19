@@ -142,9 +142,16 @@ public class Tester {
         else
             System.out.println(BAD);
 
-        System.out.println("Checking getBoxes: ");
+        // Aliasing check
+        Box3D[] boxes = coll3.getBoxes();
+        boxes[0].setBase(new Point3D(5,5,5));
+        // Get all boxes
         Box3D[] arr = coll.getBoxes();
-        if(arr.length == 50 && !nullExist(arr))
+
+        System.out.println("Checking getBoxes: ");
+        if(coll3.getBoxes()[0].equals(boxes[0]))
+            System.out.println(ALIASING);
+        else if(arr.length == 50 && !nullExist(arr))
             System.out.println(GOOD);
         else
             System.out.println(BAD);
