@@ -115,7 +115,7 @@ public class Tester {
             System.out.println(BAD);
 
         System.out.println("Checking longestDistance: " );
-        if(coll.longestDistance() == 106.44951855222267)
+        if(coll.longestDistance() == 106.44951855222267 && coll3.longestDistance() == 0)
             System.out.println(GOOD);
         else
             System.out.println(BAD);
