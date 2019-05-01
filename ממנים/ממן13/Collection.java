@@ -167,7 +167,7 @@ public class Collection {
         if (i >= MAX_NUM_BOXES || j >= MAX_NUM_BOXES || i < 0 || j < 0 || j >= _noOfBoxes || i >= _noOfBoxes)
             return 0;
 
-        int min = (i > j) ? i : j;
+        int min = (i < j) ? i : j;
         int max = (j > i) ? j : i;
 
         int maxH = 0, maxW = 0, maxL = 0;
