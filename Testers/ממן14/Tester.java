@@ -54,7 +54,7 @@ public class Tester {
     }
 
     public static int[][] generateArrays() {
-        int[][] mat = new int[10][];
+        int[][] mat = new int[100][];
         Random rnd = new Random();
 
         for (int i = 0; i < mat.length; i++) {
