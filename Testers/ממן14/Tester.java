@@ -27,5 +27,15 @@ public class Tester {
             System.out.println(GOOD);
         else
             System.out.println(BAD);
+
+        /*         Question 2         */
+        System.out.println("Question 2: ");
+        boolean biggestEvenSum = (ex14.what(arr) == 12) && (ex14.what(arr2) == 8) && (ex14.what(arr3) == 8) &&
+                (ex14.what(arr4) == 7) && (ex14.what(arr7) == 20);
+        if(biggestEvenSum)
+            System.out.println(GOOD);
+        else
+            System.out.println(BAD);
+
     }
 }
