@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Tester {
     final static String GOOD = "\t\t\t OK!";
     final static String BAD = "\t\t\t *** Bummer you're wrong! ***";
@@ -30,12 +32,72 @@ public class Tester {
 
         /*         Question 2         */
         System.out.println("Question 2: ");
-        boolean biggestEvenSum = (ex14.what(arr) == 12) && (ex14.what(arr2) == 8) && (ex14.what(arr3) == 8) &&
-                (ex14.what(arr4) == 7) && (ex14.what(arr7) == 20);
-        if(biggestEvenSum)
+        int[] temp = checkWTF();
+        if(temp == null)
             System.out.println(GOOD);
-        else
+        else {
             System.out.println(BAD);
+            System.out.println("\t\t\t The Array: " + printArr(temp));
+            System.out.println("\t\t\t Expected: " + what(temp));
+            System.out.println("\t\t\t Your stupid method: " + ex14.what(temp));
+        }
 
+    }
+
+    public static String printArr(int[] arr){
+        String ar = "";
+        for (int i = 0; i < arr.length; i++) {
+            ar += arr[i] + ", ";
+        }
+        return ar;
+    }
+
+    public static int[][] generateArrays(){
+        int[][] mat = new int[10][];
+        Random rnd = new Random();
+
+        for (int i = 0; i < mat.length; i++) {
+            mat[i] = new int[rnd.nextInt(30)];
+            for (int j = 0; j < mat[i].length; j++) {
+                mat[i][j] = rnd.nextInt(200);
+            }
+        }
+
+        return mat;
+    }
+
+    public static int[] checkWTF(){
+        Ex14 ex14 = new Ex14();
+        int[][] mat = generateArrays();
+        for (int i = 0; i < mat.length; i++) {
+            if(ex14.what(mat[i]) != what(mat[i]))
+                return mat[i];
+        }
+        return null;
+    }
+
+    private static int f (int[]a, int low, int high)
+    {
+        int res = 0;
+        for (int i=low; i<=high; i++)
+            res += a[i];
+        return res;
+    }
+    public static int what (int []a)
+    {
+        int temp = 0;
+        for (int i=0; i<a.length; i++)
+        {
+            for (int j=i; j<a.length; j++)
+            {
+                int c = f(a, i, j);
+                if (c%2 == 0)
+                {
+                    if (j-i+1 > temp)
+                        temp = j-i+1;
+                }
+            }
+        }
+        return temp;
     }
 }
