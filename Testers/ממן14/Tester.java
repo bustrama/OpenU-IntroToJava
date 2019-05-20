@@ -38,7 +38,7 @@ public class Tester {
             System.out.println(BAD);
             System.out.println("\t\t\t The Array: " + printArr(temp));
             System.out.println("\t\t\t Expected: " + what(temp));
-            System.out.println("\t\t\t Your stupid method: " + Ex14.what(temp));
+            System.out.println("\t\t\t Your method: " + Ex14.what(temp));
         }
 
     }
@@ -58,7 +58,7 @@ public class Tester {
         Random rnd = new Random();
 
         for (int i = 0; i < mat.length; i++) {
-            mat[i] = new int[rnd.nextInt(30)];
+            mat[i] = new int[rnd.nextInt(30) + 1];
             for (int j = 0; j < mat[i].length; j++) {
                 mat[i][j] = (int) ((Math.random() * 200) - 100);
             }
