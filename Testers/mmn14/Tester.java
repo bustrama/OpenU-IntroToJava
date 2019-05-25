@@ -58,6 +58,8 @@ public class Tester {
             System.out.println(GOOD);
         else
             System.out.println(BAD);
+
+        //System.out.println(Ex14.solutions(23));
     }
 
     private static String printArr(int[] arr) {
@@ -116,17 +118,16 @@ public class Tester {
 
     private static boolean checkSol() {
         System.setOut(dummyStream);
-        int sol = 1;
+        int[] ans = new int[]{1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 63, 69, 73, 75, 75, 73, 69, 63, 55, 45, 36, 28, 21, 15, 10, 6, 3};
         for (int i = 3; i < 30; i++) {
             int a = Ex14.solutions(i);
-            if (a != sol) {
+            if (a != ans[i-3]) {
                 System.setOut(originalStream);
                 System.out.println("\t\t\t Solutions(" + i + ")");
-                System.out.println("\t\t\t Expected: " + sol);
+                System.out.println("\t\t\t Expected: " + ans[i-3]);
                 System.out.println("\t\t\t Got: " + a);
                 return false;
             }
-            sol += (i - 1);
         }
         System.setOut(originalStream);
         return true;
