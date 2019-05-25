@@ -1,10 +1,19 @@
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Random;
 
 public class Tester {
     final static String GOOD = "\t\t\t OK!";
     final static String BAD = "\t\t\t *** Bummer you're wrong! ***";
 
+    static PrintStream originalStream = System.out;
+    static PrintStream dummyStream = new PrintStream(new OutputStream() {
+        public void write(int b) {
+        }
+    });
+
     public static void main(String[] args) {
+
         System.out.println("******************************************");
         System.out.println("***                                    ***");
         System.out.println("***            MMN14 Tester            ***");
@@ -21,9 +30,11 @@ public class Tester {
         int[] arr5 = {2, 1, 5, 1, 4, 1, 1, 1, 2};                                   // 7
         int[] arr6 = {9, 8, 7, 6, 5, 4, 3, 2, 1};                                   // 0
         int[] arr7 = {1, 5, 4, 3, 2, 1, 3, 3, 3, 3, 2, 1, 2, 6, 6, 5, 4, 3, 2, 1};  // 28
+
         boolean trapWater = (Ex14.waterVolume(arr) == 0) && (Ex14.waterVolume(arr2) == 1) &&
                 (Ex14.waterVolume(arr3) == 0) && (Ex14.waterVolume(arr4) == 7) && (Ex14.waterVolume(arr5) == 7) &&
                 (Ex14.waterVolume(arr6) == 0) && (Ex14.waterVolume(arr7) == 28);
+
         if (trapWater)
             System.out.println(GOOD);
         else
@@ -41,9 +52,15 @@ public class Tester {
             System.out.println("\t\t\t Your method: " + Ex14.what(temp));
         }
 
+        /*         Question 3         */
+        System.out.println("Question 3: ");
+        if (checkSol())
+            System.out.println(GOOD);
+        else
+            System.out.println(BAD);
     }
 
-    public static String printArr(int[] arr) {
+    private static String printArr(int[] arr) {
         String ar = "";
         for (int i = 0; i < arr.length; i++) {
             ar += arr[i];
@@ -53,7 +70,7 @@ public class Tester {
         return ar;
     }
 
-    public static int[][] generateArrays() {
+    private static int[][] generateArrays() {
         int[][] mat = new int[1000][];
         Random rnd = new Random();
 
@@ -67,7 +84,7 @@ public class Tester {
         return mat;
     }
 
-    public static int[] checkWTF() {
+    private static int[] checkWTF() {
         int[][] mat = generateArrays();
         for (int i = 0; i < mat.length; i++) {
             if (Ex14.what(mat[i]) != what(mat[i]))
@@ -83,7 +100,7 @@ public class Tester {
         return res;
     }
 
-    public static int what(int[] a) {
+    private static int what(int[] a) {
         int temp = 0;
         for (int i = 0; i < a.length; i++) {
             for (int j = i; j < a.length; j++) {
@@ -95,5 +112,23 @@ public class Tester {
             }
         }
         return temp;
+    }
+
+    private static boolean checkSol() {
+        System.setOut(dummyStream);
+        int sol = 1;
+        for (int i = 3; i < 30; i++) {
+            int a = Ex14.solutions(i);
+            if (a != sol) {
+                System.setOut(originalStream);
+                System.out.println("\t\t\t Solutions(" + i + ")");
+                System.out.println("\t\t\t Expected: " + sol);
+                System.out.println("\t\t\t Got: " + a);
+                return false;
+            }
+            sol += (i - 1);
+        }
+        System.setOut(originalStream);
+        return true;
     }
 }
