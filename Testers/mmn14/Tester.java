@@ -118,13 +118,13 @@ public class Tester {
 
     private static boolean checkSol() {
         System.setOut(dummyStream);
-        int[] ans = new int[]{1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 63, 69, 73, 75, 75, 73, 69, 63, 55, 45, 36, 28, 21, 15, 10, 6, 3};
-        for (int i = 3; i < 30; i++) {
+        int[] ans = new int[]{0, 0, 0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 63, 69, 73, 75, 75, 73, 69, 63, 55, 45, 36, 28, 21, 15, 10, 6, 3, 1, 0};
+        for (int i = 0; i < ans.length; i++) {
             int a = Ex14.solutions(i);
-            if (a != ans[i-3]) {
+            if (a != ans[i]) {
                 System.setOut(originalStream);
                 System.out.println("\t\t\t Solutions(" + i + ")");
-                System.out.println("\t\t\t Expected: " + ans[i-3]);
+                System.out.println("\t\t\t Expected: " + ans[i]);
                 System.out.println("\t\t\t Got: " + a);
                 return false;
             }
