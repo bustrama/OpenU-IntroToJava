@@ -24,7 +24,7 @@
 <li>תוכנה לעיצוב רעיונות (אפליקציות, אתרים, תוכנות וכו')<br /> <a href="https://www.axure.com/edu">https://www.axure.com/edu</a><br /> </li> <br>
 <li>כלי לניתוח נתונים<br /> <a href="https://www.tableau.com/academic/students">https://www.tableau.com/academic/students</a><br /> </li> <br>
 <li>Amazon Prime (חינם לחצי שנה)<br /> <a href="https://wallethacks.com/Amazon-Student">https://wallethacks.com/Amazon-Student<br /></a></li> <br>
-<li>אתר שמרכז הנחות לסטודנטים<br /><a href="https://www.myunidays.com">https://www.myunidays.com</a></li> <br>
+<li>אתר שמרכז הנחות לסטודנטים (כרגע יש רק על אפל מיוזיק, כנראה עדיין בבנייה)<br /><a href="https://www.myunidays.com">https://www.myunidays.com</a></li> <br>
 </ol>
 
 </p>
