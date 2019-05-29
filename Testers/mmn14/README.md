@@ -1,4 +1,2 @@
-<div dir="rtl">
-
-Tester - © Ben Brandes
+Tester - © Ben Brandes <br>
 Ex14Question4Tester - © Lior Elbaz
