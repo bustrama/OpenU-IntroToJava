@@ -59,7 +59,31 @@ public class Tester {
         else
             System.out.println(BAD);
 
-        //System.out.println(Ex14.solutions(23));
+        /*         Question 4         */
+        System.out.println("Question 4: ");
+
+        int mat[][] = {
+                {100, 1,    100,    100,    100,    100,    100},
+                {100, 1,    100,    1,      1,      1,      100},
+                {100, 1,    100,    1,      100,    1,      100},
+                {100, 1,    100,    1,      100,    1,      100},
+                {100, 1,    100,    100,    100,    1,      100},
+                {100, 1,    1,      1,      1,      1,      100},
+                {100, 100,  100,    100,    100,    100,    100}
+        };
+
+        int path[][] = {
+                {0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0}
+        };
+
+        System.out.println(Ex14.findSum(mat, 3100, path));
+        System.out.println(print2DArray(path));
     }
 
     private static String printArr(int[] arr) {
@@ -70,6 +94,19 @@ public class Tester {
                 ar += ", ";
         }
         return ar;
+    }
+
+    private static String print2DArray(int[][] arr) {
+        String p = "";
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                p += arr[i][j];
+                if (j < arr.length - 1)
+                    p += " ";
+            }
+            p += "\n";
+        }
+        return p;
     }
 
     private static int[][] generateArrays() {
