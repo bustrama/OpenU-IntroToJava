@@ -68,6 +68,8 @@ public class Tester {
 
     }
 
+    /*        Helper Methods        */
+
     private static String printArr(int[] arr) {
         String ar = "";
         for (int i = 0; i < arr.length; i++) {
@@ -78,6 +80,7 @@ public class Tester {
         return ar;
     }
 
+    /*    Question 2    */
     private static int[][] generateArrays() {
         int[][] mat = new int[1000][];
         Random rnd = new Random();
@@ -122,6 +125,7 @@ public class Tester {
         return temp;
     }
 
+    /*    Question 3    */
     private static boolean checkSol() {
         System.setOut(dummyStream);
         int[] ans = new int[]{0, 0, 0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 63, 69, 73, 75, 75, 73, 69, 63, 55, 45, 36, 28, 21, 15, 10, 6, 3, 1, 0};
@@ -139,8 +143,9 @@ public class Tester {
         return true;
     }
 
-    private static boolean ex4Checker() {
 
+    /*    Question 4    */
+    private static boolean ex4Checker() {
         int mat1[][] = {{100, 1, 1, 1},
                 {100, 1, 1, 1},
                 {1, 1, 1, 1},
@@ -190,7 +195,6 @@ public class Tester {
                 {100, 100, 100, 100},
                 {100, 100, 100, 100}};
 
-
         int mat6path[][] = {{1, 1, 1, 1},
                 {1, 1, 1, 1},
                 {1, 1, 1, 1},
@@ -205,22 +209,6 @@ public class Tester {
                 {0, 1, 1, 0},
                 {1, 0, 1, 0},
                 {1, 1, 1, 0}};
-
-        int mat8[][] = {{100, 1, 100, 100, 100, 100, 100},
-                {100, 1, 100, 1, 1, 1, 100},
-                {100, 1, 100, 1, 100, 1, 100},
-                {100, 1, 100, 1, 100, 1, 100},
-                {100, 1, 100, 100, 100, 1, 100},
-                {100, 1, 1, 1, 1, 1, 100},
-                {100, 100, 100, 100, 100, 100, 100}};
-
-        int mat8path[][] = {{1, 0, 1, 1, 1, 1, 1},
-                {1, 0, 1, 0, 0, 0, 1},
-                {1, 0, 1, 0, 1, 0, 1},
-                {1, 0, 1, 0, 1, 0, 1},
-                {1, 0, 1, 1, 1, 0, 1},
-                {1, 0, 0, 0, 0, 0, 1},
-                {1, 1, 1, 1, 1, 1, 1}};
 
         int[][] emptyPath = new int[4][4];
 
@@ -248,11 +236,6 @@ public class Tester {
         Ex14Mat test7 = new Ex14Mat(mat7, 800);
         Ex14Mat test7Expected = new Ex14Mat(true, mat7path);
 
-        //I think these 2 are too large
-//        Ex14Mat test8 = new Ex14Mat(mat8, 3100);
-//        Ex14Mat test8Expected = new Ex14Mat(true, mat8path);
-
-
         boolean didPass = testMat(test1, test1Expected)
                 && testMat(test1false, test1falseExpected)
                 && testMat(test2, test2Expected)
@@ -261,9 +244,6 @@ public class Tester {
                 && testMat(test5, test5Expected)
                 && testMat(test6, test6Expected)
                 && testMat(test7, test7Expected);
-
-        //I think this is too large
-//                && testMat(test8, test8Expected);
 
         return didPass;
     }
@@ -277,20 +257,21 @@ public class Tester {
     }
 
     private static void printMatError(Ex14Mat test, Ex14Mat expected) {
-        System.out.println("something seems wrong. \n the matrix is this: \n");
+        System.out.println("Something seems wrong. \n The matrix: \n");
         printPath(test.mat, true);
         System.out.println("\n your answer:\n is there a solution: " + test.isPathExists);
-        System.out.println("your matrix: ");
+        System.out.println("Your matrix: ");
         printPath(test.path);
-        System.out.println("\n expected result: ");
-        System.out.println("is there a solution: " + expected.isPathExists);
-        System.out.println("expected matrix: ");
+        System.out.println("\n Expected result: ");
+        System.out.println("Is there a solution: " + expected.isPathExists);
+        System.out.println("Expected matrix: ");
         printPath(expected.path);
     }
 
     private static boolean comparePaths(int[][] exPath, int[][] expectedPath) {
         if (exPath.length != expectedPath.length)
             return false;
+
         for (int i = 0; i < exPath.length; i++) {
             if (exPath[i].length != expectedPath[i].length)
                 return false;
@@ -316,10 +297,8 @@ public class Tester {
     }
 
     private static void printPath(int path[][], boolean isMatrix) {
-
         for (int i = 0; i < path.length; i++) {
             for (int j = 0; j < path[i].length; j++) {
-
                 if (isMatrix) {
                     System.out.print(path[i][j] + "\t");
                 } else {
@@ -338,7 +317,6 @@ public class Tester {
         printPath(path, false);
     }
 
-
     private static class Ex14Mat {
         boolean isPathExists;
         int[][] path;
@@ -350,7 +328,6 @@ public class Tester {
         }
 
         public Ex14Mat(int[][] mat, int sum) {
-
             int[][] path = makeMat(0, mat.length);
             this.mat = mat;
             this.isPathExists = Ex14.findSum(mat, sum, path);
