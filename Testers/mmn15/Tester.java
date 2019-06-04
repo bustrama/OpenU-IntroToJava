@@ -1,8 +1,8 @@
 import java.util.Random;
 
 public class Tester {
-    final static String GOOD = "\t\t\t OK!";
-    final static String BAD = "\t\t\t *** Oops, something's smelly with your node ***";
+    final static String GOOD = "\t\t\t\t\t\t\t\t\t OK!";
+    final static String BAD = "\t *** Oops, something's smelly with your node ***";
     final static int MAX = 500;
     final static int MIN = -500;
 
@@ -27,6 +27,26 @@ public class Tester {
         else
             System.out.println(BAD);
 
+        /*         length         */
+        System.out.println("Checking length functionality: ");
+        if (checkLength())
+            System.out.println(GOOD);
+        else
+            System.out.println(BAD);
+
+        /*         sum         */
+        System.out.println("Checking sum functionality: ");
+        if (checkSum())
+            System.out.println(GOOD);
+        else
+            System.out.println(BAD);
+
+        /*         maxLength         */
+        System.out.println("Checking maxLength functionality: ");
+        if (checkMaxLength())
+            System.out.println(GOOD);
+        else
+            System.out.println(BAD);
     }
 
     private static IntListTwo generateList(int size) {
@@ -126,6 +146,78 @@ public class Tester {
         if (!list2.toString().equals("{}"))
             return false;
 
+        return true;
+    }
+
+    private static boolean checkLength() {
+        IntListTwo list1 = generateList(1);
+        if (list1.length() != 1)
+            return false;
+
+        IntListTwo list2 = generateList(5);
+        if (list2.length() != 5)
+            return false;
+
+        IntListTwo list3 = generateList(100);
+        if (list3.length() != 100)
+            return false;
+
+        return true;
+    }
+
+    private static int sumArr(int[] arr) {
+        int sum = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        return sum;
+    }
+
+    private static boolean checkSum() {
+        IntListTwo list = generateList(20);
+        int[] arr = listToArray(list);
+
+        if(list.sum() != sumArr(arr))
+            return false;
+
+        IntListTwo list1 = generateList(1);
+        int[] arr1 = listToArray(list1);
+
+        if(list1.sum() != sumArr(arr1))
+            return false;
+
+        return true;
+    }
+
+    // As a gesture for mmn14
+    private static int f(int[] a, int low, int high) {
+        int res = 0;
+        for (int i = low; i <= high; i++)
+            res += a[i];
+        return res;
+    }
+
+    private static int what(int[] a) {
+        int temp = 0;
+        for (int i = 0; i < a.length; i++) {
+            for (int j = i; j < a.length; j++) {
+                int c = f(a, i, j);
+                if (c % 2 == 0) {
+                    if (j - i + 1 > temp)
+                        temp = j - i + 1;
+                }
+            }
+        }
+        return temp;
+    }
+
+    private static boolean checkMaxLength(){
+        IntListTwo list = generateList(1000);
+        int[] arr = listToArray(list);
+
+        if(list.maxLength() != what(arr))
+            return false;
 
         return true;
     }
