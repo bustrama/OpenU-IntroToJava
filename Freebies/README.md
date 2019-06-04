@@ -20,7 +20,7 @@
 
 <ol>
 <li>אופיס 365 (וורד, אקסל, פווארפוינט וכו)<br /> <a href="https://www.microsoft.com/en-us/education/products/office">https://www.microsoft.com/en-us/education/products/office</a><br /> </li> <br>
-<li>GitHub Education<br /> <a href="https://education.github.com/pack">https://education.github.com/pack</a><br /> </li> <br>
+<li>GitHub Education (כולל JetBrains)<br /> <a href="https://education.github.com/pack">https://education.github.com/pack</a><br /> </li> <br>
 <li>Autodesk (תוכנות לעיצוב וגרפיקה)<br /><a href="https://www.autodesk.com/education/free-software/featured">https://www.autodesk.com/education/free-software/featured</a></li> <br>
 <li>תוכנה לעיצוב רעיונות (אפליקציות, אתרים, תוכנות וכו')<br /> <a href="https://www.axure.com/edu">https://www.axure.com/edu</a><br /> </li> <br>
 <li>כלי לניתוח נתונים<br /> <a href="https://www.tableau.com/academic/students">https://www.tableau.com/academic/students</a><br /> </li> <br>
