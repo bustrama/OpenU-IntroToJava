@@ -4,6 +4,7 @@
 ### © Etamar Cohen
 <br>
 ## Tester
+
 ### שימו לב, toString יהיה חייב להיראות כך:
 
 <div dir="ltr">
