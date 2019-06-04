@@ -2,6 +2,7 @@
   
 ## Test
 ### © Etamar Cohen
+יעבוד בהנחה שaddNumbers נכון <br>
 <br>
 
 ## Tester
