@@ -1,3 +1,8 @@
+/**
+ * @author Ben Brandes
+ * @version 04/06/2019
+ */
+
 import java.util.Random;
 
 public class Tester {
