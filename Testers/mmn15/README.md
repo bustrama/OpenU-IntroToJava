@@ -2,9 +2,8 @@
   
 ## Test
 ### © Etamar Cohen
-<br><br>
+<br>
 ## Tester
-
 ### שימו לב, toString יהיה חייב להיראות כך:
 
 <div dir="ltr">
