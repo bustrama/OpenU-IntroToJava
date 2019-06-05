@@ -6,6 +6,7 @@
 <br>
 
 ## Tester
+### © Matan האנונימי - isAverage 
 ### שימו לב, toString יהיה חייב להיראות כך:
 
 <div dir="ltr">
