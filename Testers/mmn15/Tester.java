@@ -18,13 +18,21 @@ public class Tester {
         System.out.println("***                                   ***");
         System.out.println("*****************************************");
 
-        /*         AddNumber         */
-        printCheck("addNumber");
-        checkFunc(checkAddNumber());
+        /*         toString         */
+        printCheck("toString");
+        if(checkToString()){
+            System.out.println(GOOD);
 
-        /*         RemoveNumber         */
-        printCheck("removeNumber");
-        checkFunc(checkRemoveNumber());
+            /*         AddNumber         */
+            printCheck("addNumber");
+            checkFunc(checkAddNumber());
+
+            /*         RemoveNumber         */
+            printCheck("removeNumber");
+            checkFunc(checkRemoveNumber());
+        }else {
+            printErr("Please fix toString before proceeding");
+        }
 
         /*         length         */
         printCheck("length");
@@ -49,7 +57,17 @@ public class Tester {
     }
 
     private static void printCheck(String check) {
-        System.out.println("Checking " + check + "functionality:");
+        System.out.println("Checking <" + check + "> functionality:");
+    }
+
+    private static boolean checkToString(){
+        IntListTwo list = new IntListTwo();
+        list.addNumber(1);
+        list.addNumber(2);
+        list.addNumber(3);
+        String correctList = "{1, 2, 3}";
+
+        return correctList.equals(list.toString());
     }
 
     private static IntListTwo generateList(int size) {
