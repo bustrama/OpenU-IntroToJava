@@ -11,14 +11,6 @@ public class Tester {
     final static int MAX = 500;
     final static int MIN = -500;
 
-    static boolean passedTester = true;
-
-    //helper test function to reduce code
-    private static void test(boolean funcResult) {
-        System.out.println(funcResult ? GOOD : BAD);
-        passedTester = passedTester && funcResult;
-    }
-
     public static void main(String[] args) {
         System.out.println("*****************************************");
         System.out.println("***                                   ***");
@@ -27,35 +19,37 @@ public class Tester {
         System.out.println("*****************************************");
 
         /*         AddNumber         */
-        System.out.println("Checking addNumber functionality: ");
-        test(checkAddNumber());
+        printCheck("addNumber");
+        checkFunc(checkAddNumber());
 
         /*         RemoveNumber         */
-        System.out.println("Checking removeNumber functionality: ");
-        test(checkRemoveNumber());
+        printCheck("removeNumber");
+        checkFunc(checkRemoveNumber());
 
         /*         length         */
-        System.out.println("Checking length functionality: ");
-        test(checkLength());
+        printCheck("length");
+        checkFunc(checkLength());
 
         /*         sum         */
-        System.out.println("Checking sum functionality: ");
-        test(checkSum());
+        printCheck("sum");
+        checkFunc(checkSum());
 
         /*         maxLength         */
-        System.out.println("Checking maxLength functionality: ");
-        test(checkMaxLength());
+        printCheck("maxLength");
+        checkFunc(checkMaxLength());
 
         /*         isAverage         */
-        System.out.println("Checking isAverage functionality: ");
-        test(checkIsAverage());
+        printCheck("isAverage");
+        checkFunc(checkIsAverage());
+    }
 
-        /*         passed Tester         */
-        if (passedTester) {
-            System.out.println("(Still missing readToList test)");
-            System.out.println("\n Congrats! you've passed all the tests!");
-        }
+    //helper checkFunc function to reduce code
+    private static void checkFunc(boolean funcResult) {
+        System.out.println(funcResult ? GOOD : BAD);
+    }
 
+    private static void printCheck(String check) {
+        System.out.println("Checking " + check + "functionality:");
     }
 
     private static IntListTwo generateList(int size) {
@@ -232,12 +226,15 @@ public class Tester {
     }
 
 
-    //counts on properly working IntListTwo!
+    /**
+     * @Author Matan האנונימי
+     *
+     */
+    // Counts on properly working IntListTwo!
     private static boolean checkIsAverage() {
-
         double tempAvg;
 
-        //test for empty list
+        // Test for empty list
         IntListTwo list = generateList(0);
 
         if (!list.isAverage(0)) {
@@ -249,7 +246,7 @@ public class Tester {
         list.addNumber(11);
         list.addNumber(11);
 
-        //test for casting problems
+        // Test for casting problems
         if (list.isAverage((30 + 11 + 11) / 3)) {
             printErr("You might have casting issues");
             return false;
@@ -257,20 +254,20 @@ public class Tester {
 
         tempAvg = (30.0 + 11 + 11) / 3;
 
-        //casting works correctly
+        // Casting works correctly
         if (!list.isAverage(tempAvg)) {
             printErr("make sure you average correctly");
             return false;
         }
 
-        //add more numbers to check sub arrays
+        // Add more numbers to check sub arrays
         list.addNumber(700);
         list.addNumber(900);
 
-        //list should look like {11, 11, 30, 700, 900} (if people got this far it is probably correct)
-        //total sum so far is 1652, and 5 items
+        // List should look like {11, 11, 30, 700, 900} (if people got this far it is probably correct)
+        // Total sum so far is 1652, and 5 items
 
-        //check left subarray[0..2]
+        // Check left sub-array[0..2]
         if (!list.isAverage(tempAvg)) {
             printSubArrayErr(list, tempAvg, "left", "{11,11,30}");
             return false;
@@ -278,7 +275,7 @@ public class Tester {
 
         tempAvg = (11.0 + 30 + 700) / 3;
 
-        //check middle subarray[1..3]
+        // Check middle sub-array[1..3]
         if (!list.isAverage(tempAvg)) {
             printSubArrayErr(list, tempAvg, "middle", "{11, 30, 700}");
             return false;
@@ -286,7 +283,7 @@ public class Tester {
 
         tempAvg = (30.0 + 700 + 900) / 3;
 
-        //check right subarray[2..4]
+        // Check right sub-array[2..4]
         if (!list.isAverage(tempAvg)) {
             printSubArrayErr(list, tempAvg, "right", "{30, 700, 900}");
             return false;
