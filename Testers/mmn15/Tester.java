@@ -51,7 +51,7 @@ public class Tester {
         test(checkIsAverage());
 
         /*         passed Tester         */
-        if (passedTester){
+        if (passedTester) {
             System.out.println("(Still missing readToList test)");
             System.out.println("\n Congrats! you've passed all the tests!");
         }
@@ -255,19 +255,20 @@ public class Tester {
             return false;
         }
 
+        tempAvg = (30.0 + 11 + 11) / 3;
+
         //casting works correctly
-        if (!list.isAverage((30.0 + 11 + 11) / 3)) {
+        if (!list.isAverage(tempAvg)) {
             printErr("make sure you average correctly");
             return false;
         }
 
+        //add more numbers to check sub arrays
         list.addNumber(700);
         list.addNumber(900);
 
         //list should look like {11, 11, 30, 700, 900} (if people got this far it is probably correct)
         //total sum so far is 1652, and 5 items
-
-        tempAvg = (30.0 + 11 + 11) / 3;
 
         //check left subarray[0..2]
         if (!list.isAverage(tempAvg)) {
@@ -283,7 +284,7 @@ public class Tester {
             return false;
         }
 
-        tempAvg = (30.0+700+900)/3;
+        tempAvg = (30.0 + 700 + 900) / 3;
 
         //check right subarray[2..4]
         if (!list.isAverage(tempAvg)) {
@@ -297,13 +298,14 @@ public class Tester {
 
     //save some code
     private static void printSubArrayErr(IntListTwo list, double avg, String side, String subArray) {
-        printErr("your list is: " + list);
-        printErr("tested avg for " + avg);
-        printErr("you should have a " + side + " subarray with " + subArray + " with the correct avg, but got 'false'");
+        String err = "your list is: " + list
+                + "\n tested avg is " + avg
+                + "\n you should have a " + side + " subarray with " + subArray + " with the correct avg, but got 'false'";
+        printErr(err.replaceAll("\n", "\n\t *** "));
     }
 
     //too long to type
     private static void printErr(String err) {
-        System.out.println("\t *** " + err);
+        System.err.println("\t *** " + err);
     }
 }
