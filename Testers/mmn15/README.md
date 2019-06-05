@@ -6,7 +6,7 @@
 <br>
 
 ## Tester
-### © Matan האנונימי - isAverage 
+### isAverage - © Matan האנונימי
 ### שימו לב, toString יהיה חייב להיראות כך:
 
 <div dir="ltr">
