@@ -19,39 +19,37 @@ public class Tester {
         System.out.println("*****************************************");
 
         /*         AddNumber         */
-        System.out.println("Checking addNumber functionality: ");
-        if (checkAddNumber())
-            System.out.println(GOOD);
-        else
-            System.out.println(BAD);
+        printCheck("addNumber");
+        checkFunc(checkAddNumber());
 
         /*         RemoveNumber         */
-        System.out.println("Checking removeNumber functionality: ");
-        if (checkRemoveNumber())
-            System.out.println(GOOD);
-        else
-            System.out.println(BAD);
+        printCheck("removeNumber");
+        checkFunc(checkRemoveNumber());
 
         /*         length         */
-        System.out.println("Checking length functionality: ");
-        if (checkLength())
-            System.out.println(GOOD);
-        else
-            System.out.println(BAD);
+        printCheck("length");
+        checkFunc(checkLength());
 
         /*         sum         */
-        System.out.println("Checking sum functionality: ");
-        if (checkSum())
-            System.out.println(GOOD);
-        else
-            System.out.println(BAD);
+        printCheck("sum");
+        checkFunc(checkSum());
 
         /*         maxLength         */
-        System.out.println("Checking maxLength functionality: ");
-        if (checkMaxLength())
-            System.out.println(GOOD);
-        else
-            System.out.println(BAD);
+        printCheck("maxLength");
+        checkFunc(checkMaxLength());
+
+        /*         isAverage         */
+        printCheck("isAverage");
+        checkFunc(checkIsAverage());
+    }
+
+    //helper checkFunc function to reduce code
+    private static void checkFunc(boolean funcResult) {
+        System.out.println(funcResult ? GOOD : BAD);
+    }
+
+    private static void printCheck(String check) {
+        System.out.println("Checking " + check + "functionality:");
     }
 
     private static IntListTwo generateList(int size) {
@@ -183,13 +181,13 @@ public class Tester {
         IntListTwo list = generateList(20);
         int[] arr = listToArray(list);
 
-        if(list.sum() != sumArr(arr))
+        if (list.sum() != sumArr(arr))
             return false;
 
         IntListTwo list1 = generateList(1);
         int[] arr1 = listToArray(list1);
 
-        if(list1.sum() != sumArr(arr1))
+        if (list1.sum() != sumArr(arr1))
             return false;
 
         return true;
@@ -217,13 +215,94 @@ public class Tester {
         return temp;
     }
 
-    private static boolean checkMaxLength(){
+    private static boolean checkMaxLength() {
         IntListTwo list = generateList(1000);
         int[] arr = listToArray(list);
 
-        if(list.maxLength() != what(arr))
+        if (list.maxLength() != what(arr))
             return false;
 
         return true;
+    }
+
+
+    /**
+     * @Author Matan האנונימי
+     *
+     */
+    // Counts on properly working IntListTwo!
+    private static boolean checkIsAverage() {
+        double tempAvg;
+
+        // Test for empty list
+        IntListTwo list = generateList(0);
+
+        if (!list.isAverage(0)) {
+            printErr("Empty list isn't working");
+            return false;
+        }
+
+        list.addNumber(30);
+        list.addNumber(11);
+        list.addNumber(11);
+
+        // Test for casting problems
+        if (list.isAverage((30 + 11 + 11) / 3)) {
+            printErr("You might have casting issues");
+            return false;
+        }
+
+        tempAvg = (30.0 + 11 + 11) / 3;
+
+        // Casting works correctly
+        if (!list.isAverage(tempAvg)) {
+            printErr("make sure you average correctly");
+            return false;
+        }
+
+        // Add more numbers to check sub arrays
+        list.addNumber(700);
+        list.addNumber(900);
+
+        // List should look like {11, 11, 30, 700, 900} (if people got this far it is probably correct)
+        // Total sum so far is 1652, and 5 items
+
+        // Check left sub-array[0..2]
+        if (!list.isAverage(tempAvg)) {
+            printSubArrayErr(list, tempAvg, "left", "{11,11,30}");
+            return false;
+        }
+
+        tempAvg = (11.0 + 30 + 700) / 3;
+
+        // Check middle sub-array[1..3]
+        if (!list.isAverage(tempAvg)) {
+            printSubArrayErr(list, tempAvg, "middle", "{11, 30, 700}");
+            return false;
+        }
+
+        tempAvg = (30.0 + 700 + 900) / 3;
+
+        // Check right sub-array[2..4]
+        if (!list.isAverage(tempAvg)) {
+            printSubArrayErr(list, tempAvg, "right", "{30, 700, 900}");
+            return false;
+        }
+
+        //TODO: maybe there are more edge cases to add
+        return true;
+    }
+
+    //save some code
+    private static void printSubArrayErr(IntListTwo list, double avg, String side, String subArray) {
+        String err = "your list is: " + list
+                + "\n tested avg is " + avg
+                + "\n you should have a " + side + " subarray with " + subArray + " with the correct avg, but got 'false'";
+        printErr(err.replaceAll("\n", "\n\t *** "));
+    }
+
+    //too long to type
+    private static void printErr(String err) {
+        System.err.println("\t *** " + err);
     }
 }
