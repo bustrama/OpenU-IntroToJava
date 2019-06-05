@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Tester {
     final static String GOOD = "\t\t\t\t\t\t\t\t\t OK!";
-    final static String BAD = "\t *** Oops, something's smelly with your node *** \n\t（╯°□°）╯ ︵ ┻━━┻";
+    final static String BAD = "\t *** Oops, something's smelly with your node ***";
     final static int MAX = 500;
     final static int MIN = -500;
 
