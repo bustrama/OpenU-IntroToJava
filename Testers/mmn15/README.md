@@ -1,12 +1,12 @@
 <div dir="rtl">
   
-## Test
+## Test.java
 ### © Etamar Cohen
 יעבוד בהנחה שaddNumbers נכון <br>
 <br>
 
-## Tester
-### isAverage - © Matan האנונימי
+## Tester.java
+### isAverage - © האנונימי Matan
 ### שימו לב, toString יהיה חייב להיראות כך:
 
 <div dir="ltr">
