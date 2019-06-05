@@ -53,7 +53,7 @@ public class Tester {
         /*         passed Tester         */
         if (passedTester){
             System.out.println("(Still missing readToList test)");
-            System.out.println("\n Congrats! you've passed all the tests! \t ᕕ( ՞ ᗜ ՞ )ᕗ");
+            System.out.println("\n Congrats! you've passed all the tests!");
         }
 
     }
