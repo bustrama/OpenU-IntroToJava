@@ -2,7 +2,7 @@
 
 # 20441 - מבוא למדעי המחשב ושפת Java
 
-### עמוד שמרכז דברים חשובים:
+### עיקר הפרויקט:
 ### <a href="https://github.com/BuStRaMa/OpenU-IntroToJava/wiki"> Wiki </a>
 
 </div>
