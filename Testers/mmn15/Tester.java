@@ -1,6 +1,6 @@
 /**
  * @author Ben Brandes
- * @version 04/06/2019
+ * @version 06/06/2019
  */
 
 import java.util.Random;
@@ -208,6 +208,10 @@ public class Tester {
         if (list1.sum() != sumArr(arr1))
             return false;
 
+        IntListTwo list2 = new IntListTwo();
+        if(list2.sum() != 0)
+            return false;
+
         return true;
     }
 
@@ -255,8 +259,8 @@ public class Tester {
         // Test for empty list
         IntListTwo list = generateList(0);
 
-        if (!list.isAverage(0)) {
-            printErr("Empty list isn't working");
+        if (list.isAverage(0)) {
+            printErr("Empty list should return false");
             return false;
         }
 
